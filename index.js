@@ -4,6 +4,7 @@ const connectToDB = require("./db");
 
 const userRouter = require("./routes/userRoutes");
 const foodCategoryRoutes = require("./routes/foodCategoryRoutes");
+const foodRoutes = require("./routes/foodRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 1000;
@@ -20,6 +21,8 @@ app.get("/", (req, res) => {
 app.use("/food-Category", foodCategoryRoutes);
 
 app.use("/user", userRouter);
+
+app.use("/food", foodRoutes);
 
 app.listen(PORT, () => {
   console.log(`API listening on http://localhost:${PORT}`);
