@@ -1,14 +1,17 @@
 const UserModel = require("../../schemas/userSchema");
 
+const bcrypt = require("bcrypt");
+
+const SALT_ROUND = 10;
+
 const createUser = async (req, res) => {
-  const { firstname, email, password, phoneNumber, address } = req.body;
+  const { email, password } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, SALT_ROUND);
   try {
     const data = await UserModel.create({
-      firstname: firstname,
       email: email,
-      password: password,
-      phoneNumber: phoneNumber,
-      address: address,
+      password: hashedPassword,
     });
     console.log(data);
     res.status(201).json(`created user:${data}`);
