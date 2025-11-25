@@ -4,7 +4,7 @@ const FoodSchema = new Schema(
   {
     foodname: {
       type: String,
-      required: [true, "first name is required"],
+      // required: [true, " name is required"],
     },
     price: {
       type: Number,
@@ -12,11 +12,11 @@ const FoodSchema = new Schema(
     },
     image: {
       type: String,
-      required: [true],
+      // required: [true],
     },
     ingredients: {
       type: String,
-      required: [true],
+      // required: [true],
     },
     categoryId: {
       type: Schema.Types.ObjectId,
