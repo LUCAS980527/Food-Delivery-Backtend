@@ -1,5 +1,5 @@
+const generateToken = require("../../middleware/generateToken");
 const UserModel = require("../../schemas/userSchema");
-
 const bcrypt = require("bcrypt");
 
 const loginUser = async (req, res) => {
@@ -7,16 +7,24 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ email });
-
-    const isPassingMatching = bcrypt.compare(password, user.password);
-
-    if (isPassingMatching) {
-      res.status(200).json(`user: ${data}`);
-    } else {
-      res.status(400).json("Passwod does not matching");
+    if (!user) {
+      return res.status(400).json("User not found");
     }
+
+    const isPasswordMatching = await bcrypt.compare(password, user.password);
+    if (!isPasswordMatching) {
+      return res.status(400).json("Password does not match");
+    }
+
+    const token = generateToken(user);
+
+    return res.status(200).json({
+      message: "Login successful",
+      token,
+      user,
+    });
   } catch (err) {
-    res.status(500).json(`something went wrong: ${err} `);
+    return res.status(500).json(`Something went wrong: ${err}`);
   }
 };
 
