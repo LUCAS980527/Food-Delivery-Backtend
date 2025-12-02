@@ -14,6 +14,6 @@ foodCategoryRoutes.put("/", verifyJwt, putFoodCategory);
 
 foodCategoryRoutes.delete("/:id", verifyJwt, deleteFoodCategory);
 
-foodCategoryRoutes.post("/", verifyJwt, createFoodCategory);
+foodCategoryRoutes.post("/", createFoodCategory);
 
 module.exports = foodCategoryRoutes;

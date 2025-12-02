@@ -4,7 +4,7 @@ const getFoodCategory = async (req, res) => {
   const { id } = req.body;
 
   try {
-    const data = await FoodCategoryModel.findById(id);
+    const data = await FoodCategoryModel.find();
     if (!data) {
       res.status(204).json("user not founds");
     }
