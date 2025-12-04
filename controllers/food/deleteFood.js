@@ -1,7 +1,7 @@
 const FoodModel = require("../../schemas/foodSchema");
 
 const deleteFood = async (req, res) => {
-  const { id } = req.body;
+  // const { id } = req.body;
 
   try {
     const data = await FoodModel.findByIdAndDelete(id);
