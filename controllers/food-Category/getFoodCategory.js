@@ -1,7 +1,7 @@
 const FoodCategoryModel = require("../../schemas/food-categorySchema");
 
 const getFoodCategory = async (req, res) => {
-  const { id } = req.body;
+  // const { id } = req.body;
 
   try {
     const data = await FoodCategoryModel.find();

@@ -1,14 +1,14 @@
 const FoodModel = require("../../schemas/foodSchema");
 
 const createFood = async (req, res) => {
-  const { foodname, price, image, incredients, category } = req.body;
+  const { foodname, price, image, ingredients, categoryId } = req.body;
   try {
     const data = await FoodModel.create({
       foodname: foodname,
       price: price,
       image: image,
-      incredients: incredients,
-      category: category,
+      ingredients: ingredients,
+      categoryId: categoryId,
     });
     console.log(data);
     res.status(201).json(`created food:${data}`);

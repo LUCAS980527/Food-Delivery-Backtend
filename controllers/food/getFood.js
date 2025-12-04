@@ -1,10 +1,10 @@
 const FoodModel = require("../../schemas/foodSchema");
 
 const getFood = async (req, res) => {
-  const { id } = req.body;
+  // const { id } = req.body;
 
   try {
-    const data = await FoodModel.findById(id);
+    const data = await FoodModel.find();
     if (!data) {
       res.status(204).json("not founds");
     }

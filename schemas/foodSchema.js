@@ -7,7 +7,7 @@ const FoodSchema = new Schema(
       // required: [true, " name is required"],
     },
     price: {
-      type: Number,
+      type: String,
       required: [true],
     },
     image: {

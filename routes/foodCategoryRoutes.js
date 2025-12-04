@@ -4,7 +4,7 @@ const createFoodCategory = require("../controllers/food-Category/createFoodCateg
 const getFoodCategory = require("../controllers/food-Category/getFoodCategory");
 const deleteFoodCategory = require("../controllers/food-Category/deleteFoodCategory");
 const putFoodCategory = require("../controllers/food-Category/putFoodCategory");
-const verifyJwt = require("../middleware/generateToken");
+const verifyJwt = require("../middleware/verifyJWT");
 
 const foodCategoryRoutes = express.Router();
 
@@ -14,6 +14,6 @@ foodCategoryRoutes.put("/", verifyJwt, putFoodCategory);
 
 foodCategoryRoutes.delete("/:id", verifyJwt, deleteFoodCategory);
 
-foodCategoryRoutes.post("/", createFoodCategory);
+foodCategoryRoutes.post("/", verifyJwt, createFoodCategory);
 
 module.exports = foodCategoryRoutes;
