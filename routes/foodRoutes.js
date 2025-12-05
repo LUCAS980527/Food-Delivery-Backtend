@@ -7,7 +7,7 @@ const putFood = require("../controllers/food/putFood");
 
 const foodRouter = express.Router();
 
-foodRouter.get("/", getFood);
+foodRouter.get("/:categoryId", getFood);
 
 foodRouter.put("/", putFood);
 
